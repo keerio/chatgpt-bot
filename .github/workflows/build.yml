@@ -10,9 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - id: pre-step
-      shell: bash
-      run: echo "${{ secrets.ENV_DATA }}" > 1.env
+    - run:  echo "${{ secrets.ENV_DATA }}" > ${{ github.repository }}/.env
+
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@v5
       with:
