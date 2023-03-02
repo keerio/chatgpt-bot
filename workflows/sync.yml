@@ -1,18 +1,19 @@
-name: Sync Fork
+name: Fetch
 
 on:
   schedule:
     - cron: '*/30 * * * *' # every 30 minutes
   workflow_dispatch: # on button click
 
-jobs:
-  sync:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: tgymnich/fork-sync@v1.8
-        with:
-          owner: $current_repo_owner
-          base: master
-          head: master
+env:
+  GITHUB_TOKEN: ${{ secret.GITTOKEN }}
+runs-on: ubuntu-latest
+steps:
+  - uses: rekgrpth/git-clone-shell-action@v1
+  - env:
+      INPUTS_BRANCH: main # branch to fetch, default: current workflow branch (usually it is repository default branch (usually it is master))
+      INPUTS_EMAIL: actions@github.com # user.email to merge, default: actions@github.com
+      INPUTS_NAME: git merge upstream # user.name to merge, default: git merge upstream
+      INPUTS_REPOSITORY: wenLiangcan/chatgpt-telegram-bot # repository from fetch, required
+      INPUTS_URL: https://github.com # fetch repository url, default https://github.com
+    uses: rekgrpth/git-fetch-upstream-merge-push-shell-action@v1
