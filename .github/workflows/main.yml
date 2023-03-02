@@ -19,24 +19,3 @@ jobs:
           INPUTS_REPOSITORY: wenLiangcan/chatgpt-telegram-bot # repository from fetch, required
           INPUTS_URL: https://github.com # fetch repository url, default https://github.com
         uses: rekgrpth/git-fetch-upstream-merge-push-shell-action@v1
-
-choose one of the authentication methods below
-OPENAI_EMAIL="test@nrdvrgnt.com"
-OPENAI_PASSWORD="testopenai"
-
-OPENAI_SESSION_TOKEN="<Comes from cookies on chat.openai.com as '__Secure-next-auth.session-token'>"
-
-OPENAI_ACCESS_TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS
-5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJ0ZXN0QG5yZHZyZ250LmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJnZW9pcF9jb3VudHJ5IjoiVFIifSwiaHR0cHM6Ly9hcGkub3BlbmFpLmNvbS9hdX
-RoIjp7InVzZXJfaWQiOiJ1c2VyLWFnenlaa0VHTTJiV0xUeHJhaDJ2SjQ2MyJ9LCJpc3MiOiJodHRwczovL2F1dGgwLm9wZW5haS5jb20vIiwic3ViIjoiYXV0aDB8NjNmZjRiZmM3NDZmZTc3NDA1YmZjMDY3Ii
-wiYXVkIjpbImh0dHBzOi8vYXBpLm9wZW5haS5jb20vdjEiLCJodHRwczovL29wZW5haS5vcGVuYWkuYXV0aDBhcHAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTY3Nzc2MjEzMywiZXhwIjoxNjc4OTcxNzMzLCJhen
-AiOiJUZEpJY2JlMTZXb1RIdE45NW55eXdoNUU0eU9vNkl0RyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgbW9kZWwucmVhZCBtb2RlbC5yZXF1ZXN0IG9yZ2FuaXphdGlvbi5yZWFkIG9mZmxpbmVfYW
-NjZXNzIn0.nyDNhRcYkV_a4PY8wm1TxWzpYLCjNwdRKeuWwOhwq-TeOAnOaexbEbgID_cCnwY-UAChpp_986tH7t8xM9CejDDUWZF453mKYVrjADLSRimz5D74rucg0o_eqAwI3S4vP5c9hEAI0jnbPvGehJdjXV
-LcJ3gwMN0qI4jzqW481p8R9Co_0f0E_Nr-tLYPy01FL16KZAmxl69KJCPQ0K9Wp1hwYMB_7kfMSh3dj5PgNRnKx9xG5ldAL4Iutep0fH1_FqyQqR6nzLgWgN-VEBGGVAjDKRXSKO4YAEGgpWhzTo7utg6ccDJI8z
-2v24B5btDVYs1jsDdOoEvED3xwKBOysA"
-###
-
-USE_STREAM="true"
-
-TELEGRAM_BOT_TOKEN="5921065615:AAHcPgyjl3xcHMwJr-KC0XL45P-J_80gYew"
-ALLOWED_TELEGRAM_USER_IDS="*"
