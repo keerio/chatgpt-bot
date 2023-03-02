@@ -9,7 +9,7 @@ RUN pip install --user pipenv
 
 WORKDIR /home/appuser/app
 COPY . .
-COPY .env .
+#COPY .env .
 RUN pipenv install --system --deploy --ignore-pipfile
 
 CMD ["python", "main.py"]
