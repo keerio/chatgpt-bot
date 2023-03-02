@@ -19,31 +19,3 @@ jobs:
           INPUTS_REPOSITORY: wenLiangcan/chatgpt-telegram-bot # repository from fetch, required
           INPUTS_URL: https://github.com # fetch repository url, default https://github.com
         uses: rekgrpth/git-fetch-upstream-merge-push-shell-action@v1
-        id: diff
-      - name: Check diff output
-        if: contains(steps.diff.outputs.diff, 'DIFF=0')
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          stop_ci_skip: true
-          stop_rebase: true
-          stop_merge: true
-
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    needs: sync
-    steps:
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-      - name: Build Docker Image
-        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/chatgpt-telegram-bot:latest .
-
-      - name: Push Docker Image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/chatgpt-telegram-bot:latest
