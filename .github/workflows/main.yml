@@ -8,7 +8,7 @@ on:
 jobs:
   sync:
     env:
-      GITHUB_TOKEN: ${{ secret.GITTOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITTOKEN }}
     runs-on: ubuntu-latest
     steps:
       - uses: rekgrpth/git-clone-shell-action@v1
