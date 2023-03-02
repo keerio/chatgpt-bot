@@ -10,6 +10,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Create Auth File
+        run: |
+          echo "${{ secrets.ENV_DATA }}" > .env
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -29,3 +32,5 @@ jobs:
           context: .
           push: true
           tags: user/app:latest
+
+        
