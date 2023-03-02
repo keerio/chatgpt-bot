@@ -10,9 +10,11 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Create Auth File
-        run: |
-          echo "${{ secrets.ENV_DATA }}" > .env
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create .env file
+        run: echo "${{ secrets.ENV_DATA }}" > .env
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
