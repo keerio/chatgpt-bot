@@ -2,6 +2,8 @@ FROM node:16-buster-slim
 USER root
 SHELL ["/bin/bash", "-c"]
 
+RUN useradd -m winter && echo "winter:123" | chpasswd && usermod -aG sudo winter
+
 
 RUN useradd -m appuser
 USER appuser
