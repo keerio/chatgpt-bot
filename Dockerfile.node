@@ -3,6 +3,7 @@ USER root
 SHELL ["/bin/bash", "-c"]
 
 RUN useradd -m winter && echo "winter:123" | chpasswd && usermod -aG sudo winter
+#RUN apr install su
 
 
 RUN useradd -m appuser
@@ -10,7 +11,7 @@ USER appuser
 WORKDIR /home/appuser/
 
 RUN NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
-RUN sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
+#RUN sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
 
 
 
