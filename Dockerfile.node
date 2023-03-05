@@ -8,7 +8,7 @@ USER appuser
 WORKDIR /home/appuser/
 
 RUN NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
-RUN ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
+RUN sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
 
 
 
