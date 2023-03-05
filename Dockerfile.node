@@ -1,4 +1,7 @@
 FROM node:16-buster-slim
+USER root
+SHELL ["/bin/bash", "-c"]
+
 
 RUN useradd -m appuser
 USER appuser
