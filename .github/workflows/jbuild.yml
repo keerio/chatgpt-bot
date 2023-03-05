@@ -1,4 +1,4 @@
-name: Publish to Registry
+name: Jo to registry
 on:
   push:
     branches:
@@ -13,10 +13,10 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@v5
       with:
-        name: keerio/chatgpt-bot
+        name: keerio/jnode
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
         tags: "latest"
-        buildargs: MY_FIRST,MY_SECOND
+        file: Dockerfile.node
 
         
