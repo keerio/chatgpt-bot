@@ -1,18 +1,17 @@
-FROM node:16-buster-slim
-USER root
-SHELL ["/bin/bash", "-c"]
+# Use an existing base image
+FROM node:latest
 
-RUN useradd -m winter && echo "winter:123" | chpasswd && usermod -aG sudo winter
-#RUN apr install su
+# Open ports 41900 and 41901
+EXPOSE 41900 41901
 
+# Update and upgrade packages
+RUN apt-get update && apt-get upgrade -y
 
-RUN useradd -m appuser
-USER appuser
-WORKDIR /home/appuser/
+# Install necessary packages
+RUN apt-get install -y socat ss curl iputils-ping nano
 
-RUN NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
-#RUN sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
+# Install Joplin
+RUN NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
 
-
-
-#CMD ["joplin"]
+# Start Joplin server and socat
+CMD joplin server start && socat tcp-listen:41900,reuseaddr,fork tcp:localhost:41184
