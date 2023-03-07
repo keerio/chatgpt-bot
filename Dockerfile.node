@@ -16,8 +16,8 @@ RUN apt-get install -y socat iproute2 curl iputils-ping nano jq
 # Install Joplin
 RUN NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
 
-RUN mkdir ip /data
-RUN chmod 777 data
+RUN mkdir -p /data
+RUN chmod 777 /data
 
 COPY entrypoint.sh /data/entrypoint.sh
 RUN chmod +x /data/entrypoint.sh
