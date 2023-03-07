@@ -1,5 +1,8 @@
 name: Jo to registry
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch: # on button click
 
 jobs:
