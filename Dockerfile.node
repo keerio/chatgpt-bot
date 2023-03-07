@@ -8,10 +8,18 @@ EXPOSE 41900 41901
 RUN apt-get update && apt-get upgrade -y
 
 # Install necessary packages
-RUN apt-get install -y socat iproute2 curl iputils-ping nano
+RUN apt-get install -y socat iproute2 curl iputils-ping nano jq 
 
 # Install Joplin
 RUN NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
 
+## Install variables 
+RUN set -ex && \
+    joplin config sync.target 9 \
+    joplin config clipperServer.autoStart = true \
+    joplin config sync.9.path $SYNCPATH \
+    joplin config sync.9.username $SYNCNAME \
+    joplin config sync.9.password $SYNCPASSWORD
+
 # Start Joplin server and socat
-CMD joplin server start && socat tcp-listen:41900,reuseaddr,fork tcp:localhost:41184
+CMD joplin sync && joplin server start && socat tcp-listen:41900,reuseaddr,fork tcp:localhost:41184
