@@ -1,15 +1,11 @@
 #!/bin/bash
 
-#set -e
+set -e
 
 # Run joplin config -v
 #joplin config -v &
 
 export JO_API_TOKEN=$(joplin config api.token)
-
-
-
-
 
 socat -d -d tcp-listen:41900,reuseaddr,fork tcp:localhost:41184 &
 
@@ -26,4 +22,4 @@ joplin sync 9
 
 joplin server start &
 
-# Export token
+socat -d -d tcp-listen:41900,reuseaddr,fork tcp:localhost:41184 &
