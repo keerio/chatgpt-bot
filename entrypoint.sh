@@ -15,7 +15,7 @@ joplin config sync.9.password $SYNCPASSWORD
 # Export token
 export JO_API_TOKEN=$(joplin config api.token)
 
-joplin sync &
+joplin sync 9
 
 joplin server start &
 
